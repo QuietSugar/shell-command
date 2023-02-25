@@ -17,15 +17,14 @@ fi
 
 # 准备加载配置文件
 configFile="$HOME/.config/xu-scripts/$1"
+echo '--->>> load env from :↓↓↓ '$configFile
 if [ -e $configFile ]; then
-  echo '--->>> load env from :↓↓↓ '$configFile
   while read line || [[ -n ${line} ]];do
     eval "$line"
     echo $line
   done < $configFile
   echo "--->>> load env from : finish load"
 else
-  # 配置文件不存在,退出
-#  echo '文件不存在'$configFile
-  exit 0
+ echo '文件不存在'$configFile
+ exit 0
 fi
