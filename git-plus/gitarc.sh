@@ -1,14 +1,26 @@
 #!/bin/bash
 # ====================================================
 #   遍历寻找目录下所有带 .git的目录,
-#	将
-#	
+#	  将它归档到 固定目录中
+#
 # ====================================================
 
 # set -x
 
-
 base_path=$(pwd)
+# 加载环境变量
+source load_script_config xu-scripts-git
+
+
+# 设置基础目录,一定要配置,无默认值
+if [ -n "$GIT_CLONE_BASE_DIR" ]; then
+  baseDir="$GIT_CLONE_BASE_DIR"
+fi
+if [ ! -d "$baseDir" ]; then
+  echo '[ xu -> ] 目录不存在,退出'
+  exit 0
+fi
+
 function lm_traverse_dir(){
 	# echo '开始 处理文件夹: ---------------------------'$(pwd)
 	# echo "当前处理的文件夹: "$1
@@ -18,23 +30,19 @@ function lm_traverse_dir(){
 		cloneUrl=$(git config --get remote.origin.url)
 		echo "[log:]  原始路径:     $cloneUrl"
 		#替换
-		cloneUrl=$(echo "$cloneUrl" | sed 's#https://ghproxy.com/##')
+#		cloneUrl=$(echo "$cloneUrl" | sed 's#https://ghproxy.com/##')
 		# 删除前缀和后缀
 		if [[ "$cloneUrl" =~ ^https://.* ]]; then
-		  echo "[log:]  https url"
 		  project_dir=$(echo "$cloneUrl" | sed 's#https://##' | sed 's/.git//g')
 		elif [[ "$cloneUrl" =~ ^http://.* ]]; then
-		  echo "[log:]  http url"
 		  project_dir=$(echo "$cloneUrl" | sed 's#http://##' | sed 's/.git//g')
 		elif [[ "$cloneUrl" =~ ^git@.* ]]; then
-		  echo "[log:]  git ssh url"
 		  project_dir=$(echo "$cloneUrl" | sed 's#git@##' | sed 's/.git//g' | sed 's#:#/#')
 		else
 		  echo "[log:]  error url"
 		  exit 0
 		fi
-		
-		baseDir="/d/git-repo"
+
 		project_name=$(echo ${project_dir##*/} )
 		git_clone_to_dir=${project_dir%/*}
 		# 替换路径中的冒号(windows不支持该字符)
@@ -53,8 +61,6 @@ function lm_traverse_dir(){
 		else
 		  echo "[log:]  已存在,跳过clone"
 		fi
-
-
 	else
 		# 当前目录不是一个git仓库文件夹,遍历进入处理
 		for file in `ls -a`

@@ -4,10 +4,10 @@
 
 ROOT_DIR=$(pwd)
 # 存放命令的位置
-script_path=${HOME}"/xu-script"
+script_path=${HOME}"/xu-scripts"
 # 创建目录存放脚本的位置,
 if [ ! -d $script_path ];then
-	mkdir ~/xu-script
+	mkdir ~/xu-scripts
 fi
 function uninstall(){
   rm -rf $script_path

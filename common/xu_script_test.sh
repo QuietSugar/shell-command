@@ -9,7 +9,7 @@
 echo '当前目录: '$(pwd)
 echo '----->>>>>'
 echo '测试加载配置文件: '$(pwd)
-source load_script_config.sh xu-script-test
+source load_script_config xu-scripts-test
 echo $key1
 echo $key2
 echo '----->>>>>'
