@@ -41,6 +41,7 @@ function install_done(){
     bin_ath=$(cygpath -w ${script_path})
   else
     bin_ath=$script_path
+    chmod -R +x $script_path
   fi
   echo '将以下路径加入Path环境变量: '$bin_ath
 }

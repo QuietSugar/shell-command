@@ -5,6 +5,7 @@
 可以将脚本安装成命令,全局使用
 
 ```shell
+chmod +x install_sh.sh
 ./install_sh.sh
 ```
 
