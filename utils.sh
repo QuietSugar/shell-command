@@ -37,7 +37,7 @@ function install_sh_dir(){
 
 function install_done(){
   echo 'install done'
-  if [ "Windows_NT1" = "$OS" ] ;then
+  if [ "Windows_NT" = "$OS" ] ;then
     bin_ath=$(cygpath -w ${script_path})
   else
     bin_ath=$script_path
