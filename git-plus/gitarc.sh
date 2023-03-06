@@ -9,7 +9,7 @@
 
 base_path=$(pwd)
 # 加载环境变量
-source load_script_config xu-scripts-git
+source load_script_config git
 
 
 # 设置基础目录,一定要配置,无默认值
@@ -55,7 +55,7 @@ function lm_traverse_dir(){
 		if [ ! -d "$absolute_project_dir/$project_name" ]; then
 		  #cd "$absolute_project_dir"
 		  # 移动文件
-		  mv $(PWD) $absolute_project_dir
+		  mv $(pwd) $absolute_project_dir
 		  echo "[log:]  移动路径: $absolute_project_dir"
 		  echo ""
 		else

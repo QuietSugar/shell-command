@@ -6,7 +6,7 @@
 # ====================================================
 #   针对 git clone 的封装
 #	  请事先做好账户认证,需要在执行git clone的情况下不需要输入用户名和密码
-#   配置文件地址: ~/.config/xu-scripts/gitclone
+#   配置文件地址: $HOME/.xu/config/gitclone
 #   GIT_CLONE_BASE_DIR:
 #           表示下载到本地的基础地址
 #           例如: GIT_CLONE_BASE_DIR=/d/yourpath
@@ -28,7 +28,7 @@ if [ ! -n "$cloneUrl" ]; then
 fi
 
 # 加载环境变量
-source load_script_config xu-scripts-git
+source load_script_config git
 # 设置基础目录
 if [ -n "$GIT_CLONE_BASE_DIR" ]; then
   baseDir="$GIT_CLONE_BASE_DIR"

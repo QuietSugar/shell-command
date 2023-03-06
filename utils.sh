@@ -4,14 +4,17 @@
 
 ROOT_DIR=$(pwd)
 # 存放命令的位置
-script_path=${HOME}"/xu-scripts"
+script_path=${HOME}"/.xu/bin"
 # 创建目录存放脚本的位置,
 if [ ! -d $script_path ];then
-	mkdir ~/xu-scripts
+	mkdir -p $script_path
 fi
+
+# 卸载,仅针对script_path
 function uninstall(){
   rm -rf $script_path
 }
+
 # ====================================================
 #   将当前目录下的脚本安装成命令
 #	  命令名就是除去后缀的文件名
