@@ -2,14 +2,14 @@
 # ====================================================
 # 测试命令
 #	无实际意义
-#	
+#
 #
 # ====================================================
 
 echo '当前目录: '$(pwd)
 echo '----->>>>>'
 echo '测试加载配置文件: '$(pwd)
-source load_script_config xu-scripts-test
+source load_script_config common
 echo $key1
 echo $key2
 echo '----->>>>>'

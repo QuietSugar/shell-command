@@ -9,7 +9,7 @@
 
 base_path=$(pwd)
 # 加载环境变量
-source load_script_config git
+source load_script_config git-plus
 
 
 # 设置基础目录,一定要配置,无默认值
@@ -48,7 +48,7 @@ function lm_traverse_dir(){
 		# 替换路径中的冒号(windows不支持该字符)
 		git_clone_to_dir=$(echo "$git_clone_to_dir" | sed 's#:#_#')
 		absolute_project_dir="$baseDir/$git_clone_to_dir"
-		
+
 		if [ ! -d "$absolute_project_dir" ]; then
 		  mkdir -p "$absolute_project_dir"
 		fi
@@ -70,19 +70,18 @@ function lm_traverse_dir(){
 				# 判断是不是 . 和 ..
 				if [[ $file != '.' ]] && [[ $file != '..' ]];
 				then
-					# echo '准备进入文件夹'$file	
+					# echo '准备进入文件夹'$file
 					# 进入当前目录
 					cd $file
-					lm_traverse_dir $file	#遍历子目录				
+					lm_traverse_dir $file	#遍历子目录
 				fi
 			fi
 		done
 	fi
 	# echo '结束 文件夹: ---------------------------'$(pwd)
 	cd ..
-}   
+}
 
 lm_traverse_dir .
 
 
- 

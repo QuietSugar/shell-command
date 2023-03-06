@@ -2,7 +2,7 @@
 
 ## @version:		1.1.2
 
-## @description:	
+## @description:
 # ====================================================
 #   针对 git clone 的封装
 #	  请事先做好账户认证,需要在执行git clone的情况下不需要输入用户名和密码
@@ -28,7 +28,7 @@ if [ ! -n "$cloneUrl" ]; then
 fi
 
 # 加载环境变量
-source load_script_config git
+source load_script_config git-plus
 # 设置基础目录
 if [ -n "$GIT_CLONE_BASE_DIR" ]; then
   baseDir="$GIT_CLONE_BASE_DIR"

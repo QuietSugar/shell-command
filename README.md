@@ -6,7 +6,20 @@ chmod +x install_sh.sh
 ./install_sh.sh
 ```
 
-配置脚本
+将以下脚本内容加入你的配置文件中
+`.profile`
+`.bashrc` 适用于linux和安装了git-bash的windows
+`.bash_profile` 专门针对git-bash 位于git安装目录中
+
+```shell
+# set user's private env if it exists
+if [ -d "$HOME/.xu/env" ] ; then
+  FILES=$(find "${HOME}/.xu/env" -name '*.sh' | sort)
+  for FILE in $FILES; do
+    source $FILE
+  done
+fi
+```
 
 
 

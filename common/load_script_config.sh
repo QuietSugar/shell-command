@@ -10,21 +10,19 @@
 #
 # ====================================================
 
-if [ ! -n "$1" ]; then
-  # 缺少参数,直接退出
-  exit 0
+if [ -n "$1" ]; then
+  # 准备加载配置文件
+  configFile="$HOME/.xu/config/${1}.xu"
+  echo '--->>> load env from :↓↓↓ '$configFile
+  if [ -e $configFile ]; then
+    while read line || [[ -n ${line} ]];do
+      eval "$line"
+      echo $line
+    done < $configFile
+    echo "--->>> load env from : finish load"
+  else
+   echo '文件不存在'$configFile
+  fi
 fi
 
-# 准备加载配置文件
-configFile="$HOME/.xu/config/${1}.xu"
-echo '--->>> load env from :↓↓↓ '$configFile
-if [ -e $configFile ]; then
-  while read line || [[ -n ${line} ]];do
-    eval "$line"
-    echo $line
-  done < $configFile
-  echo "--->>> load env from : finish load"
-else
- echo '文件不存在'$configFile
- exit 0
-fi
+
