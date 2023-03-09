@@ -23,7 +23,7 @@ fi
 
 function lm_traverse_dir(){
 	# echo '开始 处理文件夹: ---------------------------'$(pwd)
-	# echo "当前处理的文件夹: "$1
+	 echo "当前处理的文件夹: "$1
 	# 判断.git文件是否存在,如果存在,表示当前目录是一个git仓库
 	if [ -d ".git" ];then
 		this_repo=$(echo "$(pwd)" | sed "s#$base_path##" )
@@ -49,13 +49,17 @@ function lm_traverse_dir(){
 		git_clone_to_dir=$(echo "$git_clone_to_dir" | sed 's#:#_#')
 		absolute_project_dir="$baseDir/$git_clone_to_dir"
 
+		echo "git_clone_to_dir  $git_clone_to_dir"
+
 		if [ ! -d "$absolute_project_dir" ]; then
 		  mkdir -p "$absolute_project_dir"
 		fi
 		if [ ! -d "$absolute_project_dir/$project_name" ]; then
 		  #cd "$absolute_project_dir"
 		  # 移动文件
+      local p_dir_name=$(basename `pwd`)
 		  mv $(pwd) $absolute_project_dir
+      mv "$absolute_project_dir/$p_dir_name" "$absolute_project_dir/$project_name"
 		  echo "[log:]  移动路径: $absolute_project_dir"
 		  echo ""
 		else
