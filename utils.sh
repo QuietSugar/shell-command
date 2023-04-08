@@ -27,12 +27,14 @@ function uninstall(){
 #	  命令名就是除去后缀的文件名
 #	  直接采用复制文件的方式,因为软连接没法再windows下面使用
 # ====================================================
+echo "install path is $script_path"
 function install_sh_dir(){
   local this_dir=$1
   if [ ! -d "$this_dir" ] ; then
     echo "${this_dir} 不存在"
     exit -1
   fi
+  echo "install dir: ${this_dir} "
   cd $this_dir
   # 遍历文件
   local FILES=$(find . -type f \( -name "*.sh" -o -name "*.bat" \) -printf "%f\n")
@@ -94,5 +96,5 @@ function install_done(){
     bin_ath=$script_path
     chmod -R +x $script_path
   fi
-  echo '请根据README.md的提示修改 .profile'
+  echo '请根据README.md的提示修改配置文件'
 }
