@@ -7,7 +7,7 @@ echo ==================begin========================
 
 cls
 SET NGINX_PATH=D:
-SET NGINX_DIR=D:\developSoftware\nginx-1.14.2\
+SET NGINX_DIR=D:\soft-dev\nginx-1.20.2\
 color 0a
 TITLE nginx-tools
 
@@ -86,7 +86,7 @@ PAUSE
 
 	IF EXIST "%NGINX_DIR%nginx.exe" (
 		echo "start '' nginx.exe"
-		start "" nginx.exe
+		start /B "" nginx.exe
 	)
 	ECHO.OK
 	goto :eof
