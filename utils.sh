@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. ./env_init.sh
-
 ROOT_DIR=$(pwd)
 # 存放命令的位置
 script_path=${HOME}"/.xu/bin"

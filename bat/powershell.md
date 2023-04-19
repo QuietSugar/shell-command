@@ -6,7 +6,7 @@
 notepad $PROFILE
 ```
 
-- 设置环境变量
+- 设置环境变量(user)
 
 ```shell
 # 指定文件路径
@@ -25,9 +25,25 @@ Get-Content $file | ForEach-Object {
 - 设置别名
 
 ```shell
-New-Alias -Name nngg -Value D:\git-repo\github.com\QuietSugar\xu-scripts\bat\nginx.bat
+New-Alias -Name nngg -Value D:\git-repo\github.com\QuietSugar\shell-command\bat\nginx.bat
 ```
 
+- 打印数据
+
+```
+# 执行脚本
+$script = "C:\Users\xu\Desktop\b.ps1"
+. $script
+
+# 打印数据
+Write-Host "Hello, World!"
+
+# 打印变量
+Write-Host $a_key
+
+# 打印脚本位置
+Write-Host $PSScriptRoot
+```
 
 # 其他
 

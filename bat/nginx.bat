@@ -6,8 +6,10 @@ rem nginx-tools
 echo ==================begin========================
 
 cls
-SET NGINX_PATH=D:
-SET NGINX_DIR=D:\soft-dev\nginx-1.20.2\
+:: SET NGINX_PATH=D:
+:: SET NGINX_DIR=D:\soft-dev\nginx-1.20.2\
+call load_bat_config.bat nginx
+
 color 0a
 TITLE nginx-tools
 

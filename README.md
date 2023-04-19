@@ -1,5 +1,5 @@
-# xu-scripts
-
+# shell-command
+ 
 # 安装
 ```shell
 chmod +x install_sh.sh
