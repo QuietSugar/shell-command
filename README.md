@@ -20,8 +20,6 @@ if [ -d "$HOME/.xu/env" ] ; then
   done
 fi
 ```
-> 上述配置对.bat脚本不生效.所以windows要手动在环境变量中加入
-> `${HOME}"/.xu/bin"`
 
 
 # 原理说明
